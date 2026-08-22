@@ -53,13 +53,13 @@ namespace Climb.Core
 
         private void LateUpdate()
         {
-            if (!_hasInit || !updateEveryFrame) return;
+            if (!_hasInit || _combined == null || !updateEveryFrame) return;
             Rebuild();
         }
 
         public void Rebuild()
         {
-            if (!_hasInit) return;
+            if (!_hasInit || _combined == null) return;
 
             int valid = 0;
             if (sources != null)
@@ -136,10 +136,13 @@ namespace Climb.Core
 
         private void OnDestroy()
         {
-            if (_combined == null) return;
-            if (Application.isPlaying) Destroy(_combined);
-            else DestroyImmediate(_combined);
-            _combined = null;
+            _hasInit = false; // 关键：销毁后不再进入 LateUpdate/Rebuild，避免访问已销毁 mesh
+            if (_combined != null)
+            {
+                if (Application.isPlaying) Destroy(_combined);
+                else DestroyImmediate(_combined);
+                _combined = null;
+            }
         }
 
 #if UNITY_EDITOR

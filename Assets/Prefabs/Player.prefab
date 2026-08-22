@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5416903353108246884}
   - component: {fileID: 3338008501518460967}
   m_Layer: 0
-  m_Name: Joint1
+  m_Name: Arm2Joint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 2261406205985715389}
   - component: {fileID: 1205422576277700247}
   m_Layer: 0
-  m_Name: Joint0
+  m_Name: Arm2Joint0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,8 +187,8 @@ GameObject:
   - component: {fileID: 278508435392242814}
   - component: {fileID: 8107608480928403157}
   - component: {fileID: 8337318184463458923}
-  m_Layer: 0
-  m_Name: Tip
+  m_Layer: 6
+  m_Name: Leg2Tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -290,8 +290,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.11574027, y: -0.060095906}
-  m_Radius: 0.24338663
+  m_Offset: {x: 0.12983951, y: -0.0206182}
+  m_Radius: 0.29696357
 --- !u!257 &8107608480928403157
 TargetJoint2D:
   m_ObjectHideFlags: 0
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557c492a8f4c9004ea363e0ff07418af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.Interaction.DragRigidbody2
-  grabRadius: 0.5
+  grabRadius: 1
   hitLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 1067592576618366063}
   - component: {fileID: 3557589830300325103}
   m_Layer: 0
-  m_Name: Joint2
+  m_Name: Leg2Joint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -459,8 +459,10 @@ GameObject:
   - component: {fileID: 7299430483796160977}
   - component: {fileID: 4437216419716038513}
   - component: {fileID: 842587918079548641}
+  - component: {fileID: 3489993541371840205}
+  - component: {fileID: 1764289648123775442}
   m_Layer: 0
-  m_Name: BodyRender
+  m_Name: BodyRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -538,6 +540,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679385802953715029}
   m_Mesh: {fileID: 4300000, guid: 347bafb4963b3e141adfc3e7636d8969, type: 2}
+--- !u!114 &3489993541371840205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679385802953715029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef29e40b327cdf54f8c9e563c7e1b74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.MeshRendererSorting
+  sortingLayerName: Player
+  sortingOrder: 300
+  forceTransparentQueue: 1
+--- !u!114 &1764289648123775442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679385802953715029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef29e40b327cdf54f8c9e563c7e1b74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.MeshRendererSorting
+  sortingLayerName: Default
+  sortingOrder: 0
+  forceTransparentQueue: 1
 --- !u!1 &906177628789135506
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,8 +581,9 @@ GameObject:
   - component: {fileID: 9133966309809615424}
   - component: {fileID: 1264557329864745946}
   - component: {fileID: 6950648922058834018}
+  - component: {fileID: 4320926391218018595}
   m_Layer: 0
-  m_Name: JointRender
+  m_Name: Arm1JointRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -615,9 +648,9 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1028545117
+  m_SortingLayer: 4
+  m_SortingOrder: 100
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &6950648922058834018
@@ -628,6 +661,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 906177628789135506}
   m_Mesh: {fileID: 4300000, guid: 8382b83b730e9fb48855f585ad9a4616, type: 2}
+--- !u!114 &4320926391218018595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906177628789135506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef29e40b327cdf54f8c9e563c7e1b74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.MeshRendererSorting
+  sortingLayerName: Player
+  sortingOrder: 100
+  forceTransparentQueue: 1
 --- !u!1 &1681514787368790472
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,8 +687,9 @@ GameObject:
   - component: {fileID: 7140787626969379554}
   - component: {fileID: 6550711918703579124}
   - component: {fileID: 5073810498848486729}
+  - component: {fileID: 3319824866493395113}
   m_Layer: 0
-  m_Name: HeadRender
+  m_Name: HeadRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -705,9 +754,9 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1028545117
+  m_SortingLayer: 4
+  m_SortingOrder: 300
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &5073810498848486729
@@ -718,6 +767,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681514787368790472}
   m_Mesh: {fileID: 4300000, guid: 8382b83b730e9fb48855f585ad9a4616, type: 2}
+--- !u!114 &3319824866493395113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681514787368790472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef29e40b327cdf54f8c9e563c7e1b74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.MeshRendererSorting
+  sortingLayerName: Player
+  sortingOrder: 300
+  forceTransparentQueue: 1
 --- !u!1 &1736453256652610001
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,7 +829,7 @@ GameObject:
   - component: {fileID: 7270275227688883681}
   - component: {fileID: 4849090883097222035}
   m_Layer: 0
-  m_Name: Joint2
+  m_Name: Arm1Joint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -845,8 +909,9 @@ GameObject:
   - component: {fileID: 1287141414197301987}
   - component: {fileID: 5712209541685800271}
   - component: {fileID: 1723127370701513710}
+  - component: {fileID: 7214601974149190615}
   m_Layer: 0
-  m_Name: TipRender
+  m_Name: Arm1TipRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -913,7 +978,7 @@ MeshRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &5712209541685800271
@@ -936,8 +1001,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef29e40b327cdf54f8c9e563c7e1b74b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.MeshRendererSorting
+  sortingLayerName: Player
+  sortingOrder: 100
+  forceTransparentQueue: 1
+--- !u!114 &7214601974149190615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965068821615991194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef29e40b327cdf54f8c9e563c7e1b74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.MeshRendererSorting
   sortingLayerName: Default
-  sortingOrder: -1
+  sortingOrder: 0
   forceTransparentQueue: 1
 --- !u!1 &2331936615126646429
 GameObject:
@@ -951,7 +1031,7 @@ GameObject:
   - component: {fileID: 8359053654492096073}
   - component: {fileID: 7679414325961181597}
   m_Layer: 0
-  m_Name: Joint1
+  m_Name: Arm1Joint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1038,7 +1118,7 @@ GameObject:
   - component: {fileID: 7249443718360330094}
   - component: {fileID: 3592903335630878975}
   m_Layer: 0
-  m_Name: Joint1
+  m_Name: Leg2Joint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1174,8 +1254,9 @@ GameObject:
   - component: {fileID: 9170770332524031459}
   - component: {fileID: 2930008125054858417}
   - component: {fileID: 9047093717314316202}
+  - component: {fileID: 6563769011705142115}
   m_Layer: 0
-  m_Name: LimbRender
+  m_Name: Arm1LimbRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1248,9 +1329,9 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingLayerID: 1028545117
+  m_SortingLayer: 4
+  m_SortingOrder: 100
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &9047093717314316202
@@ -1280,13 +1361,26 @@ MonoBehaviour:
   idleWobbleAmp: 0
   idleWobbleFreq: 0.1
   shakeGain: 0
-  sortingLayerName: Default
-  sortingOrder: -1
   useSegmentColors: 1
   segmentColors:
   - {r: 0.7176471, g: 0.33333334, b: 0.60784316, a: 1}
   - {r: 0.7735849, g: 0.5969249, b: 0.4269313, a: 1}
   segmentBlend: 0
+--- !u!114 &6563769011705142115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3580075129134189568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef29e40b327cdf54f8c9e563c7e1b74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.MeshRendererSorting
+  sortingLayerName: Player
+  sortingOrder: 100
+  forceTransparentQueue: 1
 --- !u!1 &3938767549813514483
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,8 +1393,9 @@ GameObject:
   - component: {fileID: 7340057372346455290}
   - component: {fileID: 5587524973887617333}
   - component: {fileID: 1701114321753329979}
+  - component: {fileID: 5305414593863697912}
   m_Layer: 0
-  m_Name: LimbRender
+  m_Name: Leg1LimbRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1373,9 +1468,9 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 1028545117
+  m_SortingLayer: 4
+  m_SortingOrder: 200
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &1701114321753329979
@@ -1405,13 +1500,26 @@ MonoBehaviour:
   idleWobbleAmp: 0
   idleWobbleFreq: 0.1
   shakeGain: 0
-  sortingLayerName: Default
-  sortingOrder: 1
   useSegmentColors: 1
   segmentColors:
   - {r: 0.15294118, g: 0.15294118, b: 0.15294118, a: 1}
   - {r: 0.7735849, g: 0.5969249, b: 0.4269313, a: 1}
   segmentBlend: 0
+--- !u!114 &5305414593863697912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3938767549813514483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef29e40b327cdf54f8c9e563c7e1b74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.MeshRendererSorting
+  sortingLayerName: Player
+  sortingOrder: 200
+  forceTransparentQueue: 1
 --- !u!1 &4358340628343359888
 GameObject:
   m_ObjectHideFlags: 0
@@ -1424,7 +1532,7 @@ GameObject:
   - component: {fileID: 6823171142607013839}
   - component: {fileID: 180983546297740491}
   m_Layer: 0
-  m_Name: Joint0
+  m_Name: Leg2Joint0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1511,8 +1619,9 @@ GameObject:
   - component: {fileID: 4231212462713047247}
   - component: {fileID: 4448547310587011952}
   - component: {fileID: 1759712036526034492}
+  - component: {fileID: 1982749625052121495}
   m_Layer: 0
-  m_Name: TipRender
+  m_Name: Arm2TipRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1579,7 +1688,7 @@ MeshRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &4448547310587011952
@@ -1602,8 +1711,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef29e40b327cdf54f8c9e563c7e1b74b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.MeshRendererSorting
+  sortingLayerName: Player
+  sortingOrder: 100
+  forceTransparentQueue: 1
+--- !u!114 &1982749625052121495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4527494535110236683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef29e40b327cdf54f8c9e563c7e1b74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.MeshRendererSorting
   sortingLayerName: Default
-  sortingOrder: -1
+  sortingOrder: 0
   forceTransparentQueue: 1
 --- !u!1 &4581922617912295574
 GameObject:
@@ -1619,8 +1743,8 @@ GameObject:
   - component: {fileID: 3690918532958439620}
   - component: {fileID: 8274153463418457497}
   - component: {fileID: 7015235798956788173}
-  m_Layer: 0
-  m_Name: Tip
+  m_Layer: 6
+  m_Name: Arm1Tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1722,8 +1846,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.21
+  m_Offset: {x: -0.004293889, y: 0.00071567297}
+  m_Radius: 0.2565158
 --- !u!257 &8274153463418457497
 TargetJoint2D:
   m_ObjectHideFlags: 0
@@ -1756,7 +1880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557c492a8f4c9004ea363e0ff07418af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.Interaction.DragRigidbody2
-  grabRadius: 0.5
+  grabRadius: 1
   hitLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1777,7 +1901,7 @@ GameObject:
   - component: {fileID: 3659420735866733571}
   - component: {fileID: 1412624135570053203}
   m_Layer: 0
-  m_Name: Joint2
+  m_Name: Arm2Joint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1856,8 +1980,9 @@ GameObject:
   - component: {fileID: 2799074215788215649}
   - component: {fileID: 8576614502479381936}
   - component: {fileID: 2304414723280008080}
+  - component: {fileID: 6139757765741550706}
   m_Layer: 0
-  m_Name: JointRender
+  m_Name: Arm2JointRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1922,9 +2047,9 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1028545117
+  m_SortingLayer: 4
+  m_SortingOrder: 100
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &2304414723280008080
@@ -1935,6 +2060,145 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4697045615313278749}
   m_Mesh: {fileID: 4300000, guid: 8382b83b730e9fb48855f585ad9a4616, type: 2}
+--- !u!114 &6139757765741550706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4697045615313278749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef29e40b327cdf54f8c9e563c7e1b74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.MeshRendererSorting
+  sortingLayerName: Player
+  sortingOrder: 100
+  forceTransparentQueue: 1
+--- !u!1 &4722552430349013874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 87868730514695925}
+  - component: {fileID: 1960577157262215518}
+  - component: {fileID: 3838574126866207815}
+  - component: {fileID: 1886259077280868929}
+  m_Layer: 0
+  m_Name: PlayerMeshShadow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &87868730514695925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4722552430349013874}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.85419, y: 0.17, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 4266473360835709167}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1960577157262215518
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4722552430349013874}
+  m_Mesh: {fileID: 0}
+--- !u!23 &3838574126866207815
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4722552430349013874}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: e140f6a88efa38a48815d35b240685e5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 1824058101
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1886259077280868929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4722552430349013874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 826cc519e07f7f14bb0c641488497ebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.MeshCombiner
+  sources:
+  - {fileID: 4437216419716038513}
+  - {fileID: 5949094195810520259}
+  - {fileID: 6550711918703579124}
+  - {fileID: 1264557329864745946}
+  - {fileID: 8576614502479381936}
+  - {fileID: 2021390568317165170}
+  - {fileID: 7813700507957975300}
+  - {fileID: 2930008125054858417}
+  - {fileID: 8289443341691948733}
+  - {fileID: 5587524973887617333}
+  - {fileID: 7352789127801725612}
+  - {fileID: 1287141414197301987}
+  - {fileID: 4231212462713047247}
+  - {fileID: 4713393036072094339}
+  - {fileID: 1865573346152730278}
+  mergeSubMeshes: 1
+  updateEveryFrame: 1
+  offset: {x: 0.1, y: -0.1}
+  sortingLayerName: Shadow
+  sortingOrder: 0
 --- !u!1 &5321220495376112127
 GameObject:
   m_ObjectHideFlags: 0
@@ -1949,8 +2213,8 @@ GameObject:
   - component: {fileID: 5795823512515436254}
   - component: {fileID: 299272125766964208}
   - component: {fileID: 935491503256573951}
-  m_Layer: 0
-  m_Name: Tip
+  m_Layer: 6
+  m_Name: Leg1Tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2052,8 +2316,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.093482524, y: -0.05119273}
-  m_Radius: 0.2522898
+  m_Offset: {x: -0.1410056, y: -0.030282736}
+  m_Radius: 0.3017137
 --- !u!257 &299272125766964208
 TargetJoint2D:
   m_ObjectHideFlags: 0
@@ -2086,7 +2350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557c492a8f4c9004ea363e0ff07418af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.Interaction.DragRigidbody2
-  grabRadius: 0.5
+  grabRadius: 1
   hitLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2106,8 +2370,9 @@ GameObject:
   - component: {fileID: 8541103832235114624}
   - component: {fileID: 7813700507957975300}
   - component: {fileID: 2334252198007727245}
+  - component: {fileID: 7914988732944150987}
   m_Layer: 0
-  m_Name: JointRender
+  m_Name: Leg2JointRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2172,9 +2437,9 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1028545117
+  m_SortingLayer: 4
+  m_SortingOrder: 200
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &2334252198007727245
@@ -2185,6 +2450,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5412262862448179510}
   m_Mesh: {fileID: 4300000, guid: 8382b83b730e9fb48855f585ad9a4616, type: 2}
+--- !u!114 &7914988732944150987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5412262862448179510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef29e40b327cdf54f8c9e563c7e1b74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.MeshRendererSorting
+  sortingLayerName: Player
+  sortingOrder: 200
+  forceTransparentQueue: 1
 --- !u!1 &5550983788176945894
 GameObject:
   m_ObjectHideFlags: 0
@@ -2199,8 +2479,8 @@ GameObject:
   - component: {fileID: 2948818343726086887}
   - component: {fileID: 6818024997841690851}
   - component: {fileID: 8702609277619738938}
-  m_Layer: 0
-  m_Name: Tip
+  m_Layer: 6
+  m_Name: Arm2Tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2302,8 +2582,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.21
+  m_Offset: {x: 0, y: -0.0007362962}
+  m_Radius: 0.25367385
 --- !u!257 &6818024997841690851
 TargetJoint2D:
   m_ObjectHideFlags: 0
@@ -2336,7 +2616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557c492a8f4c9004ea363e0ff07418af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.Interaction.DragRigidbody2
-  grabRadius: 0.5
+  grabRadius: 1
   hitLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2356,8 +2636,10 @@ GameObject:
   - component: {fileID: 8825053487960089881}
   - component: {fileID: 1551397181952489668}
   - component: {fileID: 5949094195810520259}
+  - component: {fileID: 8587477095650262887}
+  - component: {fileID: 7076381424629485892}
   m_Layer: 0
-  m_Name: BodyRender2
+  m_Name: BodyRenderer2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2435,6 +2717,36 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8587477095650262887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5865013994930050445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef29e40b327cdf54f8c9e563c7e1b74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.MeshRendererSorting
+  sortingLayerName: Player
+  sortingOrder: 300
+  forceTransparentQueue: 1
+--- !u!114 &7076381424629485892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5865013994930050445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef29e40b327cdf54f8c9e563c7e1b74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.MeshRendererSorting
+  sortingLayerName: Default
+  sortingOrder: 0
+  forceTransparentQueue: 1
 --- !u!1 &6026074014255006324
 GameObject:
   m_ObjectHideFlags: 0
@@ -2531,6 +2843,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7400628585044946101}
+  - {fileID: 87868730514695925}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6567891063307304455
@@ -2546,7 +2859,7 @@ GameObject:
   - component: {fileID: 2517803630555468810}
   - component: {fileID: 5924665356229765527}
   m_Layer: 0
-  m_Name: Joint1
+  m_Name: Leg1Joint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2647,8 +2960,9 @@ GameObject:
   - component: {fileID: 3765709205845953274}
   - component: {fileID: 8289443341691948733}
   - component: {fileID: 6973784626247913683}
+  - component: {fileID: 1507463197941923881}
   m_Layer: 0
-  m_Name: LimbRender
+  m_Name: Arm2LimbRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2721,9 +3035,9 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingLayerID: 1028545117
+  m_SortingLayer: 4
+  m_SortingOrder: 100
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &6973784626247913683
@@ -2753,13 +3067,26 @@ MonoBehaviour:
   idleWobbleAmp: 0
   idleWobbleFreq: 0.1
   shakeGain: 0
-  sortingLayerName: Default
-  sortingOrder: -1
   useSegmentColors: 1
   segmentColors:
   - {r: 0.7176471, g: 0.33333334, b: 0.60784316, a: 1}
   - {r: 0.7735849, g: 0.5969249, b: 0.4269313, a: 1}
   segmentBlend: 0
+--- !u!114 &1507463197941923881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6810784183634910926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef29e40b327cdf54f8c9e563c7e1b74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.MeshRendererSorting
+  sortingLayerName: Player
+  sortingOrder: 100
+  forceTransparentQueue: 1
 --- !u!1 &7730581750888795694
 GameObject:
   m_ObjectHideFlags: 0
@@ -2771,8 +3098,9 @@ GameObject:
   - component: {fileID: 3474427801838805691}
   - component: {fileID: 4713393036072094339}
   - component: {fileID: 7851834496740762816}
+  - component: {fileID: 1628295953122416824}
   m_Layer: 0
-  m_Name: TipRender
+  m_Name: Leg1TipRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2837,9 +3165,9 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1028545117
+  m_SortingLayer: 4
+  m_SortingOrder: 200
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &7851834496740762816
@@ -2850,6 +3178,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7730581750888795694}
   m_Mesh: {fileID: 4300000, guid: 026cc35cd86b75545a1cead8b835b94f, type: 2}
+--- !u!114 &1628295953122416824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7730581750888795694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef29e40b327cdf54f8c9e563c7e1b74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.MeshRendererSorting
+  sortingLayerName: Player
+  sortingOrder: 200
+  forceTransparentQueue: 1
 --- !u!1 &7784904561352721138
 GameObject:
   m_ObjectHideFlags: 0
@@ -2862,7 +3205,7 @@ GameObject:
   - component: {fileID: 3059858528226878064}
   - component: {fileID: 5336314446816837303}
   m_Layer: 0
-  m_Name: Joint0
+  m_Name: Leg1Joint0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3016,8 +3359,9 @@ GameObject:
   - component: {fileID: 3226627669417412518}
   - component: {fileID: 7352789127801725612}
   - component: {fileID: 5795582787860388106}
+  - component: {fileID: 5648141722410372694}
   m_Layer: 0
-  m_Name: LimbRender
+  m_Name: Leg2LimbRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3090,9 +3434,9 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 1028545117
+  m_SortingLayer: 4
+  m_SortingOrder: 200
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &5795582787860388106
@@ -3122,13 +3466,26 @@ MonoBehaviour:
   idleWobbleAmp: 0
   idleWobbleFreq: 0.1
   shakeGain: 0
-  sortingLayerName: Default
-  sortingOrder: 1
   useSegmentColors: 1
   segmentColors:
   - {r: 0.15294118, g: 0.15294118, b: 0.15294118, a: 1}
   - {r: 0.7735849, g: 0.5969249, b: 0.4269313, a: 1}
   segmentBlend: 0
+--- !u!114 &5648141722410372694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7818567650110044434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef29e40b327cdf54f8c9e563c7e1b74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.MeshRendererSorting
+  sortingLayerName: Player
+  sortingOrder: 200
+  forceTransparentQueue: 1
 --- !u!1 &7825669277971492831
 GameObject:
   m_ObjectHideFlags: 0
@@ -3140,8 +3497,9 @@ GameObject:
   - component: {fileID: 5809481543862847213}
   - component: {fileID: 1865573346152730278}
   - component: {fileID: 6633589937649049316}
+  - component: {fileID: 8738261015355409485}
   m_Layer: 0
-  m_Name: TipRender
+  m_Name: Leg2TipRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3206,9 +3564,9 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1028545117
+  m_SortingLayer: 4
+  m_SortingOrder: 200
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &6633589937649049316
@@ -3219,6 +3577,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7825669277971492831}
   m_Mesh: {fileID: 4300000, guid: 026cc35cd86b75545a1cead8b835b94f, type: 2}
+--- !u!114 &8738261015355409485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7825669277971492831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef29e40b327cdf54f8c9e563c7e1b74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.MeshRendererSorting
+  sortingLayerName: Player
+  sortingOrder: 200
+  forceTransparentQueue: 1
 --- !u!1 &8669236995532621382
 GameObject:
   m_ObjectHideFlags: 0
@@ -3230,8 +3603,9 @@ GameObject:
   - component: {fileID: 1260846407557316990}
   - component: {fileID: 2021390568317165170}
   - component: {fileID: 8260417711742376703}
+  - component: {fileID: 1391945829309568343}
   m_Layer: 0
-  m_Name: JointRender
+  m_Name: Leg1JointRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3296,9 +3670,9 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1028545117
+  m_SortingLayer: 4
+  m_SortingOrder: 200
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &8260417711742376703
@@ -3309,6 +3683,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8669236995532621382}
   m_Mesh: {fileID: 4300000, guid: 8382b83b730e9fb48855f585ad9a4616, type: 2}
+--- !u!114 &1391945829309568343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8669236995532621382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef29e40b327cdf54f8c9e563c7e1b74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.MeshRendererSorting
+  sortingLayerName: Player
+  sortingOrder: 200
+  forceTransparentQueue: 1
 --- !u!1 &8732668301841506917
 GameObject:
   m_ObjectHideFlags: 0
@@ -3321,7 +3710,7 @@ GameObject:
   - component: {fileID: 3104438199804502421}
   - component: {fileID: 3466684052524713801}
   m_Layer: 0
-  m_Name: Joint2
+  m_Name: Leg1Joint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3401,7 +3790,7 @@ GameObject:
   - component: {fileID: 8344026502334344983}
   - component: {fileID: 5405684393065514227}
   m_Layer: 0
-  m_Name: Joint0
+  m_Name: Arm1Joint0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

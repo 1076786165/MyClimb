@@ -34,10 +34,6 @@ namespace Climb.Core.Softbody
         [Range(0.1f, 5f)] public float idleWobbleFreq = 0.1f;
         [Range(0f, 1f)] public float shakeGain = 0f;         // 颤振强度（外部驱动）
 
-        [Header("渲染顺序")]
-        [Tooltip("渲染层级名（保持 Default，需为已有 Sorting Layer）")] public string sortingLayerName = "Default";
-        [Tooltip("同层级内渲染顺序：越大越靠前（类似 SpriteRenderer 的 Order in Layer）")] public int sortingOrder = 0;
-
         [Header("分段配色")]
         [Tooltip("启用后沿长度方向分段着色（需给 segmentColors 填 2 个以上颜色）")]
         public bool useSegmentColors = false;
@@ -68,16 +64,6 @@ namespace Climb.Core.Softbody
         private Vector3 _lastMid;
 
         public void SetShake(float amount) => shakeGain = Mathf.Clamp01(amount);
-
-        /// <summary>把渲染顺序写入 MeshRenderer（URP 2D Renderer 下与 SpriteRenderer 同排序体系）。</summary>
-        private void ApplySorting()
-        {
-            var mr = GetComponent<MeshRenderer>();
-            if (mr == null) return;
-            if (!string.IsNullOrEmpty(sortingLayerName))
-                mr.sortingLayerName = sortingLayerName;
-            mr.sortingOrder = sortingOrder;
-        }
 
         /// <summary>启用分段配色时创建独立材质+分段纹理，关闭时还原共享材质。</summary>
         private void ApplySegmentColors()
@@ -133,7 +119,6 @@ namespace Climb.Core.Softbody
             // 编辑器里修改字段即时生效（与 SpriteRenderer 相同的直觉）
             var mr = GetComponent<MeshRenderer>();
             if (mr != null) EnsureTransparentQueue(mr.sharedMaterial);
-            ApplySorting();
             ApplySegmentColors();
         }
 #endif
@@ -148,7 +133,6 @@ namespace Climb.Core.Softbody
                 mr.sharedMaterial = CreateMaterial();
             _originalSharedMaterial = mr.sharedMaterial; // 在确保有材质之后记录
             EnsureTransparentQueue(mr.sharedMaterial);   // 关键：进入透明队列才能参与 2D sorting
-            ApplySorting();
             ApplySegmentColors();
             InitMode();
         }

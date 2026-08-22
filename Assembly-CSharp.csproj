@@ -59,6 +59,7 @@
     <Compile Include="Assets\Scripts\DragRigidbody.cs" />
     <Compile Include="Assets\Scripts\SoftLimbRenderer.cs" />
     <Compile Include="Assets\Scripts\FloatingJoint2.cs" />
+    <Compile Include="Assets\Scripts\StoneGrip.cs" />
     <Compile Include="Assets\Scripts\MeshRendererSorting.cs" />
   </ItemGroup>
   <ItemGroup>
