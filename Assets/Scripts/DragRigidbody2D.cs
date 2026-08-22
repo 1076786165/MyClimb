@@ -53,7 +53,6 @@ namespace Climb.Core.Interaction
             Vector3 mp = _cam.ScreenToWorldPoint(pointer.position.ReadValue());
             mp.z = 0f;
 
-            // 按下瞬间：命中自己才进入拖拽
             if (pointer.press.wasPressedThisFrame && !_dragging)
             {
                 if (IsHit(mp))
@@ -77,26 +76,22 @@ namespace Climb.Core.Interaction
             if (toTarget.magnitude > maxDragDist)
                 toTarget = toTarget.normalized * maxDragDist;
 
-            // ---- 位置 PD：误差拉向目标，速度项反向刹车（跟手 + 停得快）----
-            // 质量补偿：AddForce 的加速度 = 力/质量，乘质量后手感与物体质量无关
             Vector2 force = toTarget * dragKp - _body.linearVelocity * dragKd;
             force *= _body.mass;
             force = Vector2.ClampMagnitude(force, maxDragForce);
 
             _body.AddForce(force, ForceMode2D.Force);
 
-            // 速度上限（防拉飞），替代旧的逐帧速度衰减
             if (_body.linearVelocity.sqrMagnitude > dragMaxSpeed * dragMaxSpeed)
                 _body.linearVelocity = _body.linearVelocity.normalized * dragMaxSpeed;
         }
 
-        /// <summary>点击命中判定：优先碰撞体，其次距离。</summary>
         private bool IsHit(Vector2 worldPoint)
         {
             if (_collider != null)
             {
                 var hit = Physics2D.OverlapPoint(worldPoint, hitLayers);
-                return hit != null && hit == _collider; // 必须命中自己
+                return hit != null && hit == _collider;
             }
             return Vector2.Distance(worldPoint, (Vector2)transform.position) <= grabRadius;
         }
@@ -115,7 +110,6 @@ namespace Climb.Core.Interaction
             if (!keepGravityWhileDragging) _body.gravityScale = _gravitySaved;
             if (lockRotationWhileDragging)
                 _body.constraints &= ~RigidbodyConstraints2D.FreezeRotation;
-            // 干净利落：松手立即刹停，消除惯性滑行
             _body.linearVelocity = Vector2.zero;
             _body.angularVelocity = 0f;
         }

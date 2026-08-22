@@ -52,6 +52,7 @@
     <Analyzer Include="D:\WorkShop\UnityProject\MyClimb\Library\PackageCache\com.unity.dt.app-ui@8ac7e730dd5d\Runtime\MVVM\SourceGenerators\netstandard2.0\MVVMSourceGenerators.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Stone\StoneGrip.cs" />
     <Compile Include="Assets\Scripts\MeshCombiner.cs" />
     <Compile Include="Assets\Scripts\FloatingJoint.cs" />
     <Compile Include="Assets\Scripts\DragRigidbody2.cs" />
@@ -59,7 +60,6 @@
     <Compile Include="Assets\Scripts\DragRigidbody.cs" />
     <Compile Include="Assets\Scripts\SoftLimbRenderer.cs" />
     <Compile Include="Assets\Scripts\FloatingJoint2.cs" />
-    <Compile Include="Assets\Scripts\StoneGrip.cs" />
     <Compile Include="Assets\Scripts\MeshRendererSorting.cs" />
   </ItemGroup>
   <ItemGroup>
