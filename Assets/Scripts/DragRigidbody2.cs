@@ -5,10 +5,10 @@ namespace Climb.Core.Interaction
 {
     /// <summary>
     /// 点击拖拽刚体（TargetJoint2D 版）。
-    /// 双模式切换（由是否接触 Stone 决定，与是否拖拽无关）：
+    /// 双模式切换（由是否接触 Stone 决定）：
     ///  - 动态模式（默认）：TargetJoint2D 弹簧拖拽，用于平常移动；
-    ///  - Kinematic 模式：与 Stone 层碰撞后，刚体切为 Kinematic，用 Rigidbody2D.MovePosition 精确定位；
-    ///    离开 Stone 后自动恢复动态模式。
+    ///  - 固定模式：与 Stone 层碰撞（且拖拽中）后，冻结刚体位置（保持 Dynamic、旋转自由，手臂可自由摆动），
+    ///    用 Rigidbody2D.MovePosition 在 Stone 上微调；离开 Stone 后恢复动态模式。
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D), typeof(TargetJoint2D))]
     public sealed class DragRigidbody2 : MonoBehaviour
@@ -49,13 +49,13 @@ namespace Climb.Core.Interaction
         // ---------------- 运行状态 ----------------
 
         private bool _dragging;      // 当前是否正在拖拽
-        private bool _kinematic;     // 当前是否为 Kinematic（接触 Stone）模式
+        private bool _kinematic;     // 当前是否固定（接触 Stone）模式
         private bool _touchingStone; // 是否接触 Stone（由 OnTrigger 维护）
+        private Vector2 _targetWorld; // 每帧鼠标世界目标（FixedUpdate 移动用）
 
         // 初始值（恢复用）
         private float _gravitySaved;
         private RigidbodyConstraints2D _constraintsSaved;
-        private RigidbodyType2D _originalBodyType;
         private int _stoneLayer;
 
         /// <summary>当前是否正在被拖拽（供其他脚本查询，如 FloatingJoint）。</summary>
@@ -71,8 +71,8 @@ namespace Climb.Core.Interaction
 
             _gravitySaved = _body.gravityScale;
             _constraintsSaved = _body.constraints;
-            _originalBodyType = _body.bodyType;
             _stoneLayer = LayerMask.NameToLayer(stoneLayerName);
+            _targetWorld = _body.position;   // 初始目标 = 当前手脚位置
 
             // 关节默认关闭，只在拖拽期间启用；target 由本脚本每帧驱动
             _joint.enabled = false;
@@ -104,14 +104,24 @@ namespace Climb.Core.Interaction
 
             if (_dragging)
             {
-                if (_kinematic)
-                    _body.MovePosition(mp);   // Kinematic：直接精确定位到鼠标
-                else
-                    _joint.target = mp;       // 动态：TargetJoint2D 弹簧跟随
-
+                _targetWorld = mp;   // 记录鼠标目标，由 FixedUpdate 执行移动
                 if (pointer.press.wasReleasedThisFrame)
                     EndDrag();
             }
+        }
+
+        /// <summary>物理步进中执行移动：固定模式 MovePosition，动态模式 TargetJoint。</summary>
+        private void FixedUpdate()
+        {
+            if (_kinematic)
+            {
+                // 固定模式：每帧用 MovePosition 把位置钉在目标点（拖拽中跟鼠标，松开保持原位）
+                _body.MovePosition(_targetWorld);
+                return;
+            }
+
+            if (!_dragging) return;
+            _joint.target = _targetWorld;       // 动态：TargetJoint 弹簧跟随
         }
 
         // ---------------- Stone 接触检测（Trigger 标记） ----------------
@@ -149,21 +159,21 @@ namespace Climb.Core.Interaction
             if (_kinematic) ExitKinematicMode();
         }
 
-        /// <summary>进入 Kinematic：关闭弹簧关节，用 MovePosition 移动。</summary>
+        /// <summary>进入固定模式：关闭弹簧关节，冻结位置（保持 Dynamic，旋转自由，手臂可摆动），用 MovePosition 移动。</summary>
         private void EnterKinematicMode()
         {
             _kinematic = true;
             _joint.enabled = false;
-            _body.bodyType = RigidbodyType2D.Kinematic;
+            _targetWorld = _body.position;   // 固定锚点 = 当前手脚位置
             _body.linearVelocity = Vector2.zero;
             _body.angularVelocity = 0f;
         }
 
-        /// <summary>退出 Kinematic：恢复 Dynamic，重新启用 TargetJoint2D 拖拽。</summary>
+        /// <summary>退出固定模式：恢复原始约束，重新启用 TargetJoint2D 拖拽。</summary>
         private void ExitKinematicMode()
         {
             _kinematic = false;
-            _body.bodyType = _originalBodyType;
+            _body.constraints = _constraintsSaved;
             _body.linearVelocity = Vector2.zero;
             if (_dragging) _joint.enabled = true;
         }
