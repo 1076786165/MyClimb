@@ -333,9 +333,6 @@ MonoBehaviour:
   jointMaxForce: 1000
   keepGravityWhileDragging: 0
   lockRotationWhileDragging: 0
-  stoneLayerName: Stone
-  kinematicOnStone: 1
-  _initialKinematicCollider: {fileID: 0}
 --- !u!1 &372456548811063829
 GameObject:
   m_ObjectHideFlags: 0
@@ -1892,9 +1889,6 @@ MonoBehaviour:
   jointMaxForce: 1000
   keepGravityWhileDragging: 0
   lockRotationWhileDragging: 0
-  stoneLayerName: Stone
-  kinematicOnStone: 1
-  _initialKinematicCollider: {fileID: 0}
 --- !u!1 &4618716854347451252
 GameObject:
   m_ObjectHideFlags: 0
@@ -2365,9 +2359,6 @@ MonoBehaviour:
   jointMaxForce: 1000
   keepGravityWhileDragging: 0
   lockRotationWhileDragging: 0
-  stoneLayerName: Stone
-  kinematicOnStone: 1
-  _initialKinematicCollider: {fileID: 0}
 --- !u!1 &5412262862448179510
 GameObject:
   m_ObjectHideFlags: 0
@@ -2634,9 +2625,6 @@ MonoBehaviour:
   jointMaxForce: 1000
   keepGravityWhileDragging: 0
   lockRotationWhileDragging: 0
-  stoneLayerName: Stone
-  kinematicOnStone: 1
-  _initialKinematicCollider: {fileID: 0}
 --- !u!1 &5865013994930050445
 GameObject:
   m_ObjectHideFlags: 0

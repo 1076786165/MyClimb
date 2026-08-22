@@ -57,6 +57,7 @@
     <Compile Include="Assets\Scripts\FloatingJoint.cs" />
     <Compile Include="Assets\Scripts\DragRigidbody2.cs" />
     <Compile Include="Assets\Scripts\DragRigidbody2D.cs" />
+    <Compile Include="Assets\Stone\StoneGrip2.cs" />
     <Compile Include="Assets\Scripts\DragRigidbody.cs" />
     <Compile Include="Assets\Scripts\SoftLimbRenderer.cs" />
     <Compile Include="Assets\Scripts\FloatingJoint2.cs" />
