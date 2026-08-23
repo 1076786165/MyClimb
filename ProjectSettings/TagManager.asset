@@ -13,7 +13,7 @@ TagManager:
   - UI
   - Tip
   - Stone
-  - 
+  - Detector
   - 
   - 
   - 
@@ -44,11 +44,17 @@ TagManager:
   - name: Wall
     uniqueID: 482656567
     locked: 0
-  - name: Shadow
+  - name: StoneShadow
     uniqueID: 1824058101
+    locked: 0
+  - name: PlayerShadow1
+    uniqueID: 4267868841
     locked: 0
   - name: Stone
     uniqueID: 124282375
+    locked: 0
+  - name: PlayerShadow2
+    uniqueID: 1533242759
     locked: 0
   - name: Player
     uniqueID: 1028545117

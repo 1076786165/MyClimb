@@ -28,7 +28,7 @@ namespace Climb.Core.Interaction
         private Collider2D _collider;
         private TargetJoint2D _joint;
         private Camera _cam;
-        private bool _dragging;
+        [SerializeField] private bool _dragging;
         private float _gravitySaved;
         private RigidbodyConstraints2D _constraintsSaved;
 
@@ -37,6 +37,8 @@ namespace Climb.Core.Interaction
 
         private void Awake()
         {
+            hitLayers = LayerMask.GetMask("Tip");
+            
             _body = GetComponent<Rigidbody2D>();
             _collider = GetComponent<Collider2D>();
             _joint = GetComponent<TargetJoint2D>();
@@ -53,6 +55,9 @@ namespace Climb.Core.Interaction
 
         private void Update()
         {
+            // if(name == "Arm2Tip")
+            //     Debug.Log("Update IsDragging: " + IsDragging);
+
             if (_cam == null) return;
 
             var pointer = Pointer.current;
@@ -61,7 +66,7 @@ namespace Climb.Core.Interaction
             Vector2 mp = (Vector2)_cam.ScreenToWorldPoint(pointer.position.ReadValue());
 
             // 按下瞬间：命中自己才进入拖拽
-            if (pointer.press.wasPressedThisFrame && !_dragging)
+            if (pointer.press.isPressed && !_dragging)
             {
                 if (IsHit(mp))
                     BeginDrag(mp);

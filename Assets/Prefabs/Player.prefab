@@ -290,8 +290,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.12983951, y: -0.0206182}
-  m_Radius: 0.29696357
+  m_Offset: {x: 0.12983963, y: -0.0206182}
+  m_Radius: 0.38826492
 --- !u!257 &8107608480928403157
 TargetJoint2D:
   m_ObjectHideFlags: 0
@@ -649,7 +649,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1028545117
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 100
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
@@ -755,7 +755,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1028545117
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 300
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
@@ -1330,7 +1330,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1028545117
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 100
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
@@ -1469,7 +1469,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1028545117
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 200
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
@@ -1846,8 +1846,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.004293889, y: 0.00071567297}
-  m_Radius: 0.2565158
+  m_Offset: {x: -0.0042939186, y: 0.00071567297}
+  m_Radius: 0.37495637
 --- !u!257 &8274153463418457497
 TargetJoint2D:
   m_ObjectHideFlags: 0
@@ -2048,7 +2048,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1028545117
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 100
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
@@ -2088,7 +2088,7 @@ GameObject:
   - component: {fileID: 3838574126866207815}
   - component: {fileID: 1886259077280868929}
   m_Layer: 0
-  m_Name: PlayerMeshShadow
+  m_Name: PlayerMeshShadow1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2161,8 +2161,8 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 1824058101
-  m_SortingLayer: 2
+  m_SortingLayerID: -27098455
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
@@ -2197,7 +2197,7 @@ MonoBehaviour:
   mergeSubMeshes: 1
   updateEveryFrame: 1
   offset: {x: 0.1, y: -0.1}
-  sortingLayerName: Shadow
+  sortingLayerName: PlayerShadow1
   sortingOrder: 0
 --- !u!1 &5321220495376112127
 GameObject:
@@ -2316,8 +2316,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.1410056, y: -0.030282736}
-  m_Radius: 0.3017137
+  m_Offset: {x: -0.14752713, y: -0.030282736}
+  m_Radius: 0.41257963
 --- !u!257 &299272125766964208
 TargetJoint2D:
   m_ObjectHideFlags: 0
@@ -2438,7 +2438,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1028545117
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 200
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
@@ -2582,8 +2582,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.0007362962}
-  m_Radius: 0.25367385
+  m_Offset: {x: -0.009869933, y: -0.0007362962}
+  m_Radius: 0.40172446
 --- !u!257 &6818024997841690851
 TargetJoint2D:
   m_ObjectHideFlags: 0
@@ -2844,6 +2844,7 @@ Transform:
   m_Children:
   - {fileID: 7400628585044946101}
   - {fileID: 87868730514695925}
+  - {fileID: 265181286209997750}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6567891063307304455
@@ -3036,7 +3037,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1028545117
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 100
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
@@ -3087,6 +3088,130 @@ MonoBehaviour:
   sortingLayerName: Player
   sortingOrder: 100
   forceTransparentQueue: 1
+--- !u!1 &7227318363793536169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 265181286209997750}
+  - component: {fileID: 996051187431957800}
+  - component: {fileID: 7441770237935018175}
+  - component: {fileID: 8358912806688832740}
+  m_Layer: 0
+  m_Name: PlayerMeshShadow2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &265181286209997750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7227318363793536169}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.85419, y: 0.17, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 4266473360835709167}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &996051187431957800
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7227318363793536169}
+  m_Mesh: {fileID: 0}
+--- !u!23 &7441770237935018175
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7227318363793536169}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: e140f6a88efa38a48815d35b240685e5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 1533242759
+  m_SortingLayer: 5
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8358912806688832740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7227318363793536169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 826cc519e07f7f14bb0c641488497ebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.MeshCombiner
+  sources:
+  - {fileID: 4437216419716038513}
+  - {fileID: 5949094195810520259}
+  - {fileID: 6550711918703579124}
+  - {fileID: 1264557329864745946}
+  - {fileID: 8576614502479381936}
+  - {fileID: 2021390568317165170}
+  - {fileID: 7813700507957975300}
+  - {fileID: 2930008125054858417}
+  - {fileID: 8289443341691948733}
+  - {fileID: 5587524973887617333}
+  - {fileID: 7352789127801725612}
+  - {fileID: 1287141414197301987}
+  - {fileID: 4231212462713047247}
+  - {fileID: 4713393036072094339}
+  - {fileID: 1865573346152730278}
+  mergeSubMeshes: 1
+  updateEveryFrame: 1
+  offset: {x: 0.02, y: 0.02}
+  sortingLayerName: PlayerShadow2
+  sortingOrder: 0
 --- !u!1 &7730581750888795694
 GameObject:
   m_ObjectHideFlags: 0
@@ -3166,7 +3291,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1028545117
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 200
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
@@ -3435,7 +3560,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1028545117
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 200
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
@@ -3565,7 +3690,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1028545117
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 200
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
@@ -3671,7 +3796,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1028545117
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 200
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}

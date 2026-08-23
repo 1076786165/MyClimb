@@ -6,7 +6,11 @@ namespace Climb.Core.Interaction
     [RequireComponent(typeof(Collider2D))]
     public sealed class StoneGrip2 : MonoBehaviour
     {
+        [SerializeField] private Rigidbody2D _defaultTip;
         [SerializeField] HingeJoint2D _contactHinge;
+        [SerializeField] private MeshRenderer _outlineMesh;
+        
+
         private string _tipLayerName = "Tip";
         private int _tipLayer;
         private LayerMask _tipMask; 
@@ -14,6 +18,13 @@ namespace Climb.Core.Interaction
         private Collider2D _stoneCollider;   
         private readonly Collider2D[] _results = new Collider2D[8];
         private Camera _cam;
+
+        [Tooltip("防抖：失去接触后持续多久仍无接触，才真正断开连接")]
+        [Range(0f, 0.5f)] public float releaseDelay = 0.15f;
+        [Tooltip("stone 跟随鼠标的平滑速度（越大越跟手）")]
+        [Range(1f, 30f)] public float followSpeed = 10f;
+        private Rigidbody2D _connectedTip;   // 当前已连接的手脚（带防抖滞回）
+        private float _releaseTimer;          // 分离倒计时
 
         private void Awake()
         {
@@ -28,16 +39,42 @@ namespace Climb.Core.Interaction
 
         private void FixedUpdate()
         {
+            GameObject detectstone = TouchDetector.Instance.TouchingStone == null ? null : TouchDetector.Instance.TouchingStone.gameObject;
+
             Rigidbody2D tip = GetTouchingTip();
-            _contactHinge.connectedBody = tip == null ? null : tip;
-            if (tip == null) {
-                _contactHinge.transform.localPosition = Vector3.zero;
-                return;
+
+            if(_defaultTip != null){
+                _contactHinge.transform.position = _defaultTip.transform.position;
+                _contactHinge.connectedBody = _defaultTip;
+                _defaultTip = null;
             }
-            else if(tip.gameObject.GetComponent<DragRigidbody2>().IsDragging)
-            {
-                _contactHinge.transform.position = GetMouseWorld();
+
+            if(_contactHinge.connectedBody == null){
+                if(detectstone != null && tip != null){
+                   _contactHinge.connectedBody = tip;
+                   _contactHinge.transform.position = tip.transform.position;
+                }
             }
+            else{
+                if(tip== null && detectstone == null){
+                    _contactHinge.connectedBody = null;
+                }
+            }
+
+            if(_contactHinge.connectedBody != null && tip != null){
+                if (tip.gameObject.TryGetComponent<DragRigidbody2>(out var drag) && drag.IsDragging){
+                    Vector3 target = GetMouseWorld();
+                    float t = 1f - Mathf.Exp(-followSpeed * Time.fixedDeltaTime);
+                    _contactHinge.transform.position = Vector3.Lerp(_contactHinge.transform.position, target, t);
+                }
+            }
+
+            if(detectstone != null && tip != null){
+                _outlineMesh.gameObject.SetActive(detectstone == gameObject);
+            }else{
+                _outlineMesh.gameObject.SetActive(false);
+            }
+
         }
 
         /// <summary>鼠标世界坐标（InputSystem / 旧 Input 兼容）。</summary>
