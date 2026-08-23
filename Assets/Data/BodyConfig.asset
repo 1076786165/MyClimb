@@ -56,4 +56,4 @@ MonoBehaviour:
     mass: 25
     linearDamping: 3
     angularDamping: 3
-    gravityScale: 1
+    gravityScale: 1.2

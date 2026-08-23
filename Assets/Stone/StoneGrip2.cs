@@ -6,10 +6,12 @@ namespace Climb.Core.Interaction
     [RequireComponent(typeof(Collider2D))]
     public sealed class StoneGrip2 : MonoBehaviour
     {
+        [SerializeField] int _maxSupportCount = 1;
         [SerializeField] private Rigidbody2D _defaultTip;
         [SerializeField] HingeJoint2D _contactHinge;
         [SerializeField] private MeshRenderer _outlineMesh;
         
+        int curSupportCount = 0;
 
         private string _tipLayerName = "Tip";
         private int _tipLayer;
@@ -36,20 +38,28 @@ namespace Climb.Core.Interaction
             _tipMask = 1 << _tipLayer;
         }
 
-        void ConnectToTip(Rigidbody2D bd){
+        bool ConnectToTip(Rigidbody2D bd){
             DragRigidbody2 dragRigidbody;
             if(bd == null){
                 if(_contactHinge.connectedBody != null){
                     dragRigidbody = _contactHinge.connectedBody.gameObject.GetComponent<DragRigidbody2>();
                     dragRigidbody.HasBeenSupported = false;
                     _contactHinge.connectedBody = null;
+                    curSupportCount = 0;
+                    return false;
                 }
             }
             else{
-                dragRigidbody = bd.gameObject.GetComponent<DragRigidbody2>();
-                _contactHinge.connectedBody = bd;
-                dragRigidbody.HasBeenSupported = true;
+                if(curSupportCount < _maxSupportCount){
+                    dragRigidbody = bd.gameObject.GetComponent<DragRigidbody2>();
+                    _contactHinge.connectedBody = bd;
+                    curSupportCount = 1;
+                    dragRigidbody.HasBeenSupported = true;
+                    return true;
+                }
             }
+            
+            return false;
         }
 
 
@@ -67,8 +77,8 @@ namespace Climb.Core.Interaction
 
             if(_contactHinge.connectedBody == null){
                 if(detectstone != null && tip != null){
-                   ConnectToTip(tip);
-                   _contactHinge.transform.position = tip.transform.position;
+                   bool isConnected =  ConnectToTip(tip);
+                   if(isConnected) _contactHinge.transform.position = tip.transform.position;
                 }
             }
             else{

@@ -104,7 +104,7 @@ namespace Climb.Core
             Vector2 toMouse = ((Vector2)mousePos - (Vector2)transform.position).normalized;
             // 给自己（躯干刚体）施加力
             if(SupportCount > 0 && isAnyDragging){
-                Debug.Log($"开始拖拽 躯干助力施加 : {SupportCount}");
+                // Debug.Log($"开始拖拽 躯干助力施加 : {SupportCount}");
                 GetComponent<Rigidbody2D>()?.AddForce(bodyDragAssistanceForce * toMouse);
             }
         }
