@@ -1,5 +1,6 @@
 using Climb.Core.Interaction;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Climb.Core
 {
@@ -83,14 +84,29 @@ namespace Climb.Core
 
         void Update(){
             int SupportCount = 0;
-          
             if(handLeft != null && handLeft.GetComponent<DragRigidbody2>().HasBeenSupported) SupportCount++;
             if(handRight != null && handRight.GetComponent<DragRigidbody2>().HasBeenSupported) SupportCount++;
             if(footLeft != null && footLeft.GetComponent<DragRigidbody2>().HasBeenSupported) SupportCount++;    
             if(footRight != null && footRight.GetComponent<DragRigidbody2>().HasBeenSupported) SupportCount++;
 
-            Debug.Log($"SupportCount: {SupportCount}");
-            
+            bool isAnyDragging = false;
+            if(Pointer.current.press.isPressed){
+                if(handLeft != null && handLeft.GetComponent<DragRigidbody2>().IsDragging) isAnyDragging = true;
+                if(handRight != null && handRight.GetComponent<DragRigidbody2>().IsDragging) isAnyDragging = true;
+                if(footLeft != null && footLeft.GetComponent<DragRigidbody2>().IsDragging) isAnyDragging = true;
+                if(footRight != null && footRight.GetComponent<DragRigidbody2>().IsDragging) isAnyDragging = true; 
+            }
+
+            // 给自己施加力：大小 bodyDragAssistanceForce，方向朝向鼠标
+            var pointer = Pointer.current;
+            Vector2 screen = pointer != null ? pointer.position.ReadValue() : Vector2.zero;
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(screen);
+            Vector2 toMouse = ((Vector2)mousePos - (Vector2)transform.position).normalized;
+            // 给自己（躯干刚体）施加力
+            if(SupportCount > 0 && isAnyDragging){
+                Debug.Log($"开始拖拽 躯干助力施加 : {SupportCount}");
+                GetComponent<Rigidbody2D>()?.AddForce(bodyDragAssistanceForce * toMouse);
+            }
         }
     }
 }

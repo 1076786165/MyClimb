@@ -334,6 +334,7 @@ MonoBehaviour:
   keepGravityWhileDragging: 0
   lockRotationWhileDragging: 0
   _dragging: 0
+  _hasBeenSupported: 0
 --- !u!1 &372456548811063829
 GameObject:
   m_ObjectHideFlags: 0
@@ -1891,6 +1892,7 @@ MonoBehaviour:
   keepGravityWhileDragging: 0
   lockRotationWhileDragging: 0
   _dragging: 0
+  _hasBeenSupported: 0
 --- !u!1 &4618716854347451252
 GameObject:
   m_ObjectHideFlags: 0
@@ -2362,6 +2364,7 @@ MonoBehaviour:
   keepGravityWhileDragging: 0
   lockRotationWhileDragging: 0
   _dragging: 0
+  _hasBeenSupported: 0
 --- !u!1 &5412262862448179510
 GameObject:
   m_ObjectHideFlags: 0
@@ -2629,6 +2632,7 @@ MonoBehaviour:
   keepGravityWhileDragging: 0
   lockRotationWhileDragging: 0
   _dragging: 0
+  _hasBeenSupported: 0
 --- !u!1 &5865013994930050445
 GameObject:
   m_ObjectHideFlags: 0
@@ -2803,6 +2807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317ad7128a74c414789f4888cb2bc1ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.BodyController
+  bodyDragAssistanceForce: 50
   config: {fileID: 11400000, guid: ea311d5ba57ee864bae1af45dd4162fa, type: 2}
   shoulderLeft: {fileID: 8344026502334344983}
   elbowLeft: {fileID: 8359053654492096073}
