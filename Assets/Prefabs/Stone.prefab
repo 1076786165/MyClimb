@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2302108937624325422
 Transform:
   m_ObjectHideFlags: 0
@@ -194,7 +194,6 @@ MonoBehaviour:
   _defaultTip: {fileID: 0}
   _contactHinge: {fileID: 3012877523552915474}
   _outlineMesh: {fileID: 6206975018432876019}
-  _touchDetector: {fileID: 0}
   releaseDelay: 0.15
   followSpeed: 10
 --- !u!1 &6159869986041717262

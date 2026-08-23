@@ -333,6 +333,7 @@ MonoBehaviour:
   jointMaxForce: 1000
   keepGravityWhileDragging: 0
   lockRotationWhileDragging: 0
+  _dragging: 0
 --- !u!1 &372456548811063829
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,6 +1890,7 @@ MonoBehaviour:
   jointMaxForce: 1000
   keepGravityWhileDragging: 0
   lockRotationWhileDragging: 0
+  _dragging: 0
 --- !u!1 &4618716854347451252
 GameObject:
   m_ObjectHideFlags: 0
@@ -2359,6 +2361,7 @@ MonoBehaviour:
   jointMaxForce: 1000
   keepGravityWhileDragging: 0
   lockRotationWhileDragging: 0
+  _dragging: 0
 --- !u!1 &5412262862448179510
 GameObject:
   m_ObjectHideFlags: 0
@@ -2625,6 +2628,7 @@ MonoBehaviour:
   jointMaxForce: 1000
   keepGravityWhileDragging: 0
   lockRotationWhileDragging: 0
+  _dragging: 0
 --- !u!1 &5865013994930050445
 GameObject:
   m_ObjectHideFlags: 0
@@ -3209,7 +3213,7 @@ MonoBehaviour:
   - {fileID: 1865573346152730278}
   mergeSubMeshes: 1
   updateEveryFrame: 1
-  offset: {x: 0.02, y: 0.02}
+  offset: {x: 0.04, y: 0.04}
   sortingLayerName: PlayerShadow2
   sortingOrder: 0
 --- !u!1 &7730581750888795694
