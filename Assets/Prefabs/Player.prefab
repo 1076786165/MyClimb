@@ -2760,6 +2760,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7400628585044946101}
+  - component: {fileID: 6228988257559656042}
   - component: {fileID: 3608423311976834998}
   m_Layer: 0
   m_Name: Body
@@ -2790,6 +2791,36 @@ Transform:
   - {fileID: 3626460065474359119}
   m_Father: {fileID: 4266473360835709167}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6228988257559656042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6026074014255006324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317ad7128a74c414789f4888cb2bc1ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Climb.Core.BodyController
+  config: {fileID: 11400000, guid: ea311d5ba57ee864bae1af45dd4162fa, type: 2}
+  shoulderLeft: {fileID: 8344026502334344983}
+  elbowLeft: {fileID: 8359053654492096073}
+  wristLeft: {fileID: 7270275227688883681}
+  handLeft: {fileID: 7575318717106042046}
+  shoulderRight: {fileID: 2261406205985715389}
+  elbowRight: {fileID: 5416903353108246884}
+  wristRight: {fileID: 3659420735866733571}
+  handRight: {fileID: 8376841839605658409}
+  hipLeft: {fileID: 3059858528226878064}
+  kneeLeft: {fileID: 8487111229797337802}
+  ankleLeft: {fileID: 3104438199804502421}
+  footLeft: {fileID: 1872714877012913827}
+  hipRight: {fileID: 6823171142607013839}
+  kneeRight: {fileID: 8956313805267162549}
+  ankleRight: {fileID: 1067592576618366063}
+  footRight: {fileID: 4970800079575752751}
+  torso: {fileID: 3608423311976834998}
 --- !u!50 &3608423311976834998
 Rigidbody2D:
   serializedVersion: 5
