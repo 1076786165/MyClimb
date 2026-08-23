@@ -1,3 +1,4 @@
+using Climb.Core.Interaction;
 using UnityEngine;
 
 namespace Climb.Core
@@ -9,6 +10,9 @@ namespace Climb.Core
     /// </summary>
     public class BodyController : MonoBehaviour
     {
+        [Header("躯干拖拽辅助力")]
+        [SerializeField] float bodyDragAssistanceForce;
+
         [Header("物理参数配置")]
         [Tooltip("肢体物理参数配置（ScriptableObject，在 Project 里创建并填写）")]
         [SerializeField] BodyConfig config;
@@ -75,6 +79,18 @@ namespace Climb.Core
             rb.linearDamping = p.linearDamping;
             rb.angularDamping = p.angularDamping;
             rb.gravityScale = p.gravityScale;
+        }
+
+        void Update(){
+            int SupportCount = 0;
+          
+            if(handLeft != null && handLeft.GetComponent<DragRigidbody2>().HasBeenSupported) SupportCount++;
+            if(handRight != null && handRight.GetComponent<DragRigidbody2>().HasBeenSupported) SupportCount++;
+            if(footLeft != null && footLeft.GetComponent<DragRigidbody2>().HasBeenSupported) SupportCount++;    
+            if(footRight != null && footRight.GetComponent<DragRigidbody2>().HasBeenSupported) SupportCount++;
+
+            Debug.Log($"SupportCount: {SupportCount}");
+            
         }
     }
 }

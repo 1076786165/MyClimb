@@ -36,6 +36,22 @@ namespace Climb.Core.Interaction
             _tipMask = 1 << _tipLayer;
         }
 
+        void ConnectToTip(Rigidbody2D bd){
+            DragRigidbody2 dragRigidbody;
+            if(bd == null){
+                if(_contactHinge.connectedBody != null){
+                    dragRigidbody = _contactHinge.connectedBody.gameObject.GetComponent<DragRigidbody2>();
+                    dragRigidbody.HasBeenSupported = false;
+                    _contactHinge.connectedBody = null;
+                }
+            }
+            else{
+                dragRigidbody = bd.gameObject.GetComponent<DragRigidbody2>();
+                _contactHinge.connectedBody = bd;
+                dragRigidbody.HasBeenSupported = true;
+            }
+        }
+
 
         private void FixedUpdate()
         {
@@ -45,19 +61,19 @@ namespace Climb.Core.Interaction
 
             if(_defaultTip != null){
                 _contactHinge.transform.position = _defaultTip.transform.position;
-                _contactHinge.connectedBody = _defaultTip;
+                ConnectToTip(_defaultTip);
                 _defaultTip = null;
             }
 
             if(_contactHinge.connectedBody == null){
                 if(detectstone != null && tip != null){
-                   _contactHinge.connectedBody = tip;
+                   ConnectToTip(tip);
                    _contactHinge.transform.position = tip.transform.position;
                 }
             }
             else{
                 if(tip== null && detectstone == null){
-                    _contactHinge.connectedBody = null;
+                    ConnectToTip(null);
                 }
             }
 
@@ -100,19 +116,6 @@ namespace Climb.Core.Interaction
             return null;
         }
 
-        // private void OnTriggerEnter2D(Collider2D other)
-        // {
-        //     print($"OnTrigger2D: {other.gameObject.name}");
-        //     if (other.gameObject.layer != _tipLayer) return;
-        //     _contactHinge.connectedBody = other.GetComponent<Rigidbody2D>();
-        // }
-
-        // private void OnTriggerExit2D(Collider2D other)
-        // {
-        //     print($"OnTriggerExit2D: {other.gameObject.name}");
-        //     if (other.gameObject.layer != _tipLayer) return;
-        //     _contactHinge.connectedBody = null;
-        // }
     }
 }
 

@@ -28,12 +28,16 @@ namespace Climb.Core.Interaction
         private Collider2D _collider;
         private TargetJoint2D _joint;
         private Camera _cam;
-        [SerializeField] private bool _dragging;
+
         private float _gravitySaved;
         private RigidbodyConstraints2D _constraintsSaved;
 
         /// <summary>当前是否正在被拖拽（供其他脚本查询，如 FloatingJoint）。</summary>
+        [SerializeField] private bool _dragging;
         public bool IsDragging => _dragging;
+
+        [SerializeField] private bool _hasBeenSupported;
+        public bool HasBeenSupported { get => _hasBeenSupported; set => _hasBeenSupported = value; }
 
         private void Awake()
         {
